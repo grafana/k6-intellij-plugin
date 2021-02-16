@@ -17,7 +17,7 @@ Cloud token can be defined either in a ``Settings -> Tools -> k6`` or in ``K6_CL
 ## Run
 Either start IDE bundled with plugin via gradle:
 ```bash
-./gradlew runIdea
+./gradlew runIde
 ```                                             
 Or install built plugin manually in the Settings->Plugin section of IDEA
 
