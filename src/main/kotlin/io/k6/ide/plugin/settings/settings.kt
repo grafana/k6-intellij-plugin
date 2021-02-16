@@ -42,7 +42,7 @@ class K6SettingsConfigurable : SearchableConfigurable, Configurable.NoScroll {
 
   @Nls
   override fun getDisplayName(): String {
-    return "K6"
+    return "k6"
   }
 
   override fun getHelpTopic(): String {

@@ -19,7 +19,7 @@ internal class K6ProjectListener : ProjectManagerListener {
 
     override fun projectOpened(project: Project) {
         val line = GeneralCommandLine(which, "k6")
-        runBackgroundableTask("Check K6 Installation", project, false) {
+        runBackgroundableTask("Check k6 Installation", project, false) {
             val found = run {
                 try {
                     val osProcessHandler = OSProcessHandler(line)

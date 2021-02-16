@@ -7,7 +7,7 @@ Plugin allows running a scenario directly from the IDE either locally or in a cl
 
 Use ``Ctrl+\ `` to run a script locally or ``Ctrl+Shift+\ `` to run in a cloud. 
 
-Cloud token can be defined either in a ``Settings -> Tools -> K6`` or in ``K6_CLOUD_TOKEN`` environment variable.
+Cloud token can be defined either in a ``Settings -> Tools -> k6`` or in ``K6_CLOUD_TOKEN`` environment variable.
 <!-- Plugin description end -->
 
 ## Build plugin from the sources
