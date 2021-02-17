@@ -16,14 +16,14 @@
     </applicationListeners>
     <actions>
         <action id="io.k6.ide.plugin.run"
-                text="Run k6 Script"
+                text="k6: run current file"
                 description="Run k6 Script"
                 class="io.k6.ide.plugin.actions.RunK6Action"
                 icon="/icons/k6.png">
             <keyboard-shortcut first-keystroke="control BACK_SLASH" keymap="$default"/>
         </action>
         <action id="io.k6.ide.plugin.run.cloud"
-                text="Run k6 Script in Cloud"
+                text="k6: run current file in k6 cloud"
                 description="Run k6 Script in Cloud"
                 class="io.k6.ide.plugin.actions.RunK6CloudAction"
                 icon="/icons/k6.png">
