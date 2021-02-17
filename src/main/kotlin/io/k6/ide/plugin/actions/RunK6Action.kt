@@ -18,6 +18,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import io.k6.ide.plugin.settings.K6Settings
 import io.k6.ide.plugin.settings.K6SettingsConfigurable
 import java.nio.charset.Charset
+import javax.swing.tree.DefaultMutableTreeNode
 
 const val TOKEN_ENV_NAME = "K6_CLOUD_TOKEN"
 const val K6_NOTIFICATION_GROUP = "k6"
@@ -74,6 +75,9 @@ class RunK6CloudAction : RunK6ActionBase("cloud") {
 
 private fun AnActionEvent.extractFile() : VirtualFile? {
     getData(PlatformDataKeys.FILE_EDITOR)?.file?.let { return it }
-    ((getData(PlatformDataKeys.CONTEXT_COMPONENT) as? ProjectViewTree)?.selectionPath?.lastPathComponent as? PsiFileNode)?.virtualFile?.let { return it }
+    (getData(PlatformDataKeys.CONTEXT_COMPONENT) as? ProjectViewTree)?.selectionPath?.lastPathComponent?.let {
+        ((it as? PsiFileNode)?.virtualFile ?: ((it as? DefaultMutableTreeNode)?.userObject as? PsiFileNode)?.virtualFile)?.let { return it }
+    }
+
     return null
 }
