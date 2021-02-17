@@ -27,7 +27,7 @@
                 description="Run k6 Script in Cloud"
                 class="io.k6.ide.plugin.actions.RunK6CloudAction"
                 icon="/icons/k6.png">
-            <keyboard-shortcut first-keystroke="control shift K" keymap="$default"/>
+            <keyboard-shortcut first-keystroke="alt shift K" keymap="$default"/>
         </action>
 
     </actions>
