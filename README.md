@@ -14,15 +14,21 @@ IntelliJ Plugin to run [k6 tests](https://k6.io/) locally or in the [k6 Cloud](h
 
 This plugin allows running a k6 test in three different ways:
 
-1 - Run the test from the popup file menu. Select the test file, open the file options and click on the `k6: run current file` command.
+1 - Run the test from the popup file menu. 
+
+Select the test file, open the file options and click on `k6: run current file` or `k6: run current file in k6 cloud`.
 
 ![k6 Cloud File Options](intellij-k6-plugin-file-option.png)
 
-2 - Run the test from the Search Menu. Open the Search Menu, `Double shift`, and search for `k6`.
+2 - Run the test from the Search Menu. 
+
+From the main menu, select Navigate | Search Everywhere or press `Shift` twice to open the search window. Search for `k6` and trigger `k6: run current file` or `k6: run current file in k6 cloud`.
 
 ![k6 Search Commands](intellij-k6-plugin-search-commands.png)
 
-3 - Run the test using keyboard shortcuts. By default, `shift K` for running local tests, and `alt shift K` for cloud tests.
+3 - Run the test using keyboard shortcuts. 
+
+By default, `Shift+K` for running local tests, and `Alt+Shift+K` for cloud tests.
 
 ![k6 Shortcuts](intellij-k6-plugin-shortcuts.png)
 
