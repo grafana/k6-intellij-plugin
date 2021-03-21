@@ -4,10 +4,15 @@
     <vendor>k6</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends optional="true" config-file="plugin-js.xml">JavaScript</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="io.k6.ide.plugin.settings.K6Settings"/>
         <applicationConfigurable groupId="tools" displayName="k6" id="preferences.K6" instance="io.k6.ide.plugin.settings.K6SettingsConfigurable"/>
+
+        <configurationType implementation="io.k6.ide.plugin.run.K6RunConfigurationType"/>
+        <runConfigurationProducer implementation="io.k6.ide.plugin.run.K6Producer"/>
+
     </extensions>
 
     <applicationListeners>
@@ -20,7 +25,7 @@
                 description="Run k6 Script"
                 class="io.k6.ide.plugin.actions.RunK6Action"
                 icon="/icons/k6_16x16.png">
-            <keyboard-shortcut first-keystroke="shift K" keymap="$default"/>
+            <keyboard-shortcut first-keystroke="alt K" keymap="$default"/>
             <add-to-group group-id="ProjectViewPopupMenu"/>
         </action>
         <action id="io.k6.ide.plugin.run.cloud"

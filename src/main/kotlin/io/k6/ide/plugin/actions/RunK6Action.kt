@@ -14,7 +14,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.guessProjectDir
 import com.intellij.openapi.vfs.VirtualFile
+import io.k6.ide.plugin.run.isK6Supported
 import io.k6.ide.plugin.settings.K6Settings
 import io.k6.ide.plugin.settings.K6SettingsConfigurable
 import java.nio.charset.Charset
@@ -25,17 +27,26 @@ const val K6_NOTIFICATION_GROUP = "k6"
 
 open class RunK6ActionBase(private val command: String) : AnAction() {
 
+    override fun update(e: AnActionEvent) {
+        if (e.extractSupportedFile() == null) {
+            e.presentation.isVisible = false
+        }
+    }
+
     open fun configureCommandLine(project: Project, commandLine: GeneralCommandLine) = true
 
     override fun actionPerformed(e: AnActionEvent) {
-        val file = e.extractFile()?.also { if (!it.isInLocalFileSystem) {
+        val file = e.extractSupportedFile()?.also { if (!it.isInLocalFileSystem) {
             showBalloon("The k6 plugin currently only works with files saved on disk")
             return
         } } ?: return
         val project = e.project ?: return
         val generalCommandLine = GeneralCommandLine("k6", command, file.path)
         generalCommandLine.charset = Charset.forName("UTF-8")
-        generalCommandLine.setWorkDirectory(project.basePath)
+        project.guessProjectDir()?.let {
+            generalCommandLine.setWorkDirectory(it.path)
+        }
+
         if (!configureCommandLine(project, generalCommandLine)) {
             return
         }
@@ -72,6 +83,8 @@ class RunK6CloudAction : RunK6ActionBase("cloud") {
         return true
     }
 }
+
+private fun AnActionEvent.extractSupportedFile() = extractFile()?.takeIf { it.isK6Supported() }
 
 private fun AnActionEvent.extractFile() : VirtualFile? {
     getData(PlatformDataKeys.FILE_EDITOR)?.file?.let { return it }
