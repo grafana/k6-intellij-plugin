@@ -22,7 +22,7 @@ function wrapperHandleSummary(data) {
                 pass &= v["ok"]
             }
             if (!pass) {
-                post(`##teamcity[testFailed name='${metric}' message='threshold failed: ${escape(Object.keys(thresholds))}' details='']`)
+                post(`##teamcity[testFailed name='${metric}' message='threshold failed: ${escape(Object.keys(thresholds).toString())}' details='']`)
             }
             post(`##teamcity[testFinished name='${metric}']`)
         }

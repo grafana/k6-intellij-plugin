@@ -67,6 +67,12 @@ to run your *compiled js test* and to execute a npm build script before launch:
 
 ![img.png](doc/typescript-before.png)
 
+## Show thresholds as tests
+When `Show thresholds as tests` checkbox is selected in a run configuration, the plugin will display each configured threshold as a passed or failed test inside the test console tree view: 
+![thresholds as tests](doc/thresholds-as-tests.png)
+Each of the threshold entry is clickable and navigates to the threshold source element by double click (or key shortcut).
+Under the hood, the plugin utilises `handleSummary` callback to collect the test execution results, so it has to wrap original script and proxy the calls.  
+
 ## Installation 
 
 - In the Settings/Preferences dialog, select Plugins. 
