@@ -2,6 +2,10 @@
 
 # k6 IntelliJ Plugin Changelog
 
+## [0.2.0]
+### Added
+- 'Show thresholds as tests' option in run configuration 
+
 ## [0.1.0]
 ### Added
 - k6 Run configuration

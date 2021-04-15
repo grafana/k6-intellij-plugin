@@ -22,6 +22,7 @@ class K6ConfigurableEditorPanel(myProject: Project) : SettingsEditor<K6RunConfig
     private lateinit var myLocal: JRadioButton
     private lateinit var myCloud: JRadioButton
     private lateinit var myPty: JCheckBox
+    private lateinit var myThresholdsAsTests: JCheckBox
 
     private lateinit var myPathLabel: JLabel
     private lateinit var myEnvLabel: JLabel
@@ -41,6 +42,12 @@ class K6ConfigurableEditorPanel(myProject: Project) : SettingsEditor<K6RunConfig
         radios.forEach { it.addActionListener { e ->
             val find = radios.find { it == e.source } ?: return@addActionListener
             (radios - find).forEach { if (it.isSelected) it.isSelected = false }
+            if (myCloud.isSelected) {
+                myThresholdsAsTests.isEnabled = false
+                myThresholdsAsTests.isSelected = false
+            } else {
+                myThresholdsAsTests.isEnabled = true
+            }
         } }
 
         myPathLabel.labelFor = myScript
@@ -56,6 +63,8 @@ class K6ConfigurableEditorPanel(myProject: Project) : SettingsEditor<K6RunConfig
             selected.isSelected = true
             (radios - selected).first().isSelected = false
             myPty.isSelected = pty
+            myThresholdsAsTests.isSelected = thresholdsAsTests
+            myThresholdsAsTests.isEnabled = type == RunType.local
         }
     }
 
@@ -66,6 +75,7 @@ class K6ConfigurableEditorPanel(myProject: Project) : SettingsEditor<K6RunConfig
             additionalParams = myArguments.text
             type = if (myLocal.isSelected) RunType.local else RunType.cloud
             pty = myPty.isSelected
+            thresholdsAsTests = myThresholdsAsTests.isSelected
         }
     }
 

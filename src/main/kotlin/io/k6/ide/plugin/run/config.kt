@@ -1,7 +1,6 @@
 package io.k6.ide.plugin.run
 
 import com.devexperts.K6.plug.idea.run.K6ConfigurableEditorPanel
-import com.devexperts.K6.plug.idea.run.K6RunState
 import com.intellij.execution.Executor
 import com.intellij.execution.configuration.EnvironmentVariablesComponent
 import com.intellij.execution.configurations.*
@@ -135,6 +134,8 @@ class K6RunData : Cloneable {
     var additionalParams: String? = null
 
     var pty = true
+
+    var thresholdsAsTests = true
 
     public override fun clone(): K6RunData {
         try {

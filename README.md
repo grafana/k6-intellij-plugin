@@ -28,6 +28,7 @@ Beside the test path itself, a run configuration can define some other propertie
 * `Local`/`Cloud` run type selection
 * Additional CLI parameters, like `--vus 10`
 * Additional environmental variables
+* Define whether to show each threshold as a separate test in the test console by selecting the `Show thresholds as tests` checkbox 
 
 Default values for each of the properties can be defined via a `Run configuration template`.
 
