@@ -2,6 +2,10 @@
 
 # k6 IntelliJ Plugin Changelog
 
+## [0.2.1]
+### Fixed
+- Unable to start a run configuration on Mac OS (issue #5)
+
 ## [0.2.0]
 ### Added
 - 'Show thresholds as tests' option in run configuration 

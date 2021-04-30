@@ -66,7 +66,7 @@ class K6RunState(val myEnv: ExecutionEnvironment, val myRunConfiguration: K6RunC
             if (data.thresholdsAsTests) wrapScript(data.script ?: error("undefined script path")) else data.script,
             *translateCommandline(data.additionalParams ?: "")
         )
-            .withParentEnvironmentType(GeneralCommandLine.ParentEnvironmentType.SYSTEM)
+            .withParentEnvironmentType(GeneralCommandLine.ParentEnvironmentType.CONSOLE)
         val commandLine = if (data.pty) PtyCommandLine(generalCommandLine).withInitialColumns(120) else generalCommandLine
         commandLine.charset = Charset.forName("UTF-8")
         commandLine.environment.putAll(data.envs)
