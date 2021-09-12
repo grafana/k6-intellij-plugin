@@ -23,7 +23,7 @@ import java.io.File
 val supportedK6FileTypes = setOf("js")
 fun VirtualFile?.isK6Supported() = this?.extension in supportedK6FileTypes
 
-class K6RunConfigurationType: ConfigurationTypeBase("K6ConfigurationType", "k6", "Run k6 Script", K6Icons.k6) {
+class K6RunConfigurationType : ConfigurationTypeBase("K6ConfigurationType", "k6", "Run k6 Script", K6Icons.k6) {
     init {
         addFactory(configurationFactory())
     }
@@ -44,7 +44,6 @@ class K6RunConfigurationType: ConfigurationTypeBase("K6ConfigurationType", "k6",
                 return name
             }
         }
-
     }
 }
 
@@ -97,9 +96,12 @@ class K6RunConfig(project: Project, factory: ConfigurationFactory) :
         }
         if (data.type == RunType.cloud) {
             if (K6Settings.instance.cloudToken.takeIf { it.isNotBlank() } ?: System.getenv(TOKEN_ENV_NAME) == null) {
-                throw RuntimeConfigurationError("The cloud execution mode requires you to either have a cloud token added in your environment variables or in the k6 plugin settings") {
-                    ShowSettingsUtil.getInstance().editConfigurable(project, K6SettingsConfigurable())
-                }
+                throw RuntimeConfigurationError(
+                    "The cloud execution mode requires you to either have a cloud token added in your environment variables or in the k6 plugin settings",
+                    Runnable {
+                        ShowSettingsUtil.getInstance().editConfigurable(project, K6SettingsConfigurable())
+                    }
+                )
             }
         }
     }
@@ -122,7 +124,7 @@ private fun getLastPathComponent(path: String): String {
     return if (lastIndex >= 0) path.substring(lastIndex + 1) else path
 }
 
-enum class RunType{local, cloud}
+enum class RunType { local, cloud }
 
 class K6RunData : Cloneable {
     var script: String? = null
@@ -147,4 +149,3 @@ class K6RunData : Cloneable {
         }
     }
 }
-
