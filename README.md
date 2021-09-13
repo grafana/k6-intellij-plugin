@@ -1,6 +1,6 @@
 <!-- Plugin description -->
 
-IntelliJ Plugin to run [k6 tests](https://k6.io/) locally or in the [k6 Cloud](https://k6.io/cloud) from your IntelliJ IDE. 
+IntelliJ-based Plugin to run [k6 tests](https://k6.io/) locally or in the [k6 Cloud](https://k6.io/cloud) from your IntelliJ IDE. 
 
 - Run a k6 test as a Run configuration (a common way to run something withing IntelliJ platform)
 - Run a k6 test using keyboard shortcuts.
