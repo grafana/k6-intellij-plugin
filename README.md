@@ -1,3 +1,10 @@
+> ### ⚠ ️ This project is no longer maintained in this repository. 
+> 
+> Development and maintenance have been stopped in this repository. 
+> 
+> A fork of this project is active and maintained at [mbolotov/k6-intellij-plugin](https://github.com/mbolotov/k6-intellij-plugin).
+
+
 <!-- Plugin description -->
 
 IntelliJ-based Plugin to run [k6 tests](https://k6.io/) locally or in the [k6 Cloud](https://k6.io/cloud) from your IntelliJ IDE. 
