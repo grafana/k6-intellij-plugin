@@ -2,6 +2,10 @@
 
 # k6 IntelliJ Plugin Changelog
 
+## [0.2.3]
+### Added
+- 2021.3 Platform version supported (issue #10)
+
 ## [0.2.2]
 ### Added
 - 2021.2 Platform version supported
